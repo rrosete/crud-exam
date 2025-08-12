@@ -1,7 +1,7 @@
 import React from "react";
 import Proptypes from "prop-types";
 
-export const Button = ({ variant, children, onClick }) => {
+export const Button = ({ variant = "primary", children, onClick }) => {
   const variantStyle = {
     primary: "bg-orange-500 text-white",
     secondary: "bg-white border border-orange-500  text-black ",

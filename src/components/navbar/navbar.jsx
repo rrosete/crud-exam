@@ -7,7 +7,7 @@ import Proptypes from "prop-types";
 export const Navbar = ({ data }) => {
   const pathname = usePathname();
   return (
-    <nav className="shadow p-4">
+    <nav className="shadow p-4 bg-amber-50">
       <div className="flex mx-auto justify-between items-center">
         <div className="flex space-x-6">
           {data.map((item, index) => {

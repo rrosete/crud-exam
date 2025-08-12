@@ -19,7 +19,7 @@ const navLinks = [
 export default function AdminLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen bg-stone-50">
         <header>
           <Navbar data={navLinks} />
         </header>
