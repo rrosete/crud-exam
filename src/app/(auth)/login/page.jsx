@@ -1,10 +1,12 @@
+import { Login } from "modules/auth/login";
+
 export const metadata = {
   title: "Login",
   description: "Login form",
 };
 
-const Login = () => {
-  return <div>Login</div>;
+const LoginPage = () => {
+  return <Login />;
 };
 
-export default Login;
+export default LoginPage;
