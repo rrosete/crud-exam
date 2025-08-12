@@ -1,9 +1,11 @@
+import { User } from "modules/admin/user";
+
 export const metadata = {
   title: "User",
 };
 
-const User = () => {
-  return <div>User</div>;
+const UserPage = () => {
+  return <User />;
 };
 
-export default User;
+export default UserPage;

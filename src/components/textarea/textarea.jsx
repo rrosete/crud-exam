@@ -27,7 +27,7 @@ export const Textarea = ({
         {...props}
       />
       {error && error !== "" && (
-        <label className="block text-sm font-medium text-red-500">
+        <label className="block text-xs font-medium text-red-500 mt-1">
           {error}
         </label>
       )}
