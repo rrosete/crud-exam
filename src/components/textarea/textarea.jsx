@@ -1,11 +1,11 @@
 import Proptypes from "prop-types";
-
-export const Input = ({
-  required = false,
+export const Textarea = ({
   onChange,
-  error,
   value,
+  placeholder,
   name,
+  error,
+  required = false,
   label,
   ...props
 }) => {
@@ -17,12 +17,13 @@ export const Input = ({
         {label}
         {required && <span className="text-red-500">*</span>}
       </label>
-      <input
-        onChange={onChange}
-        required={required}
+      <textarea
         name={name}
-        className={`w-full px-4 py-2 border rounded-md bg-white text-xs ${errorStyle}`}
         value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+        className={`border rounded-md p-2 w-full text-xs  bg-white ${errorStyle}`}
         {...props}
       />
       {error && error !== "" && (
@@ -34,7 +35,7 @@ export const Input = ({
   );
 };
 
-Input.propTypes = {
+Textarea.propTypes = {
   onChange: Proptypes.func,
   required: Proptypes.bool,
   name: Proptypes.string,
@@ -43,7 +44,7 @@ Input.propTypes = {
   label: Proptypes.string,
 };
 
-Input.defaultProps = {
+Textarea.defaultProps = {
   onChange: () => {},
   required: false,
 };
