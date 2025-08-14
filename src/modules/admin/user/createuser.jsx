@@ -1,7 +1,9 @@
 "use client";
 
+import axios from "axios";
 import { Button } from "components/button/button";
 import { Input } from "components/input/input";
+import { API_URL } from "constant/constant";
 import { EMAIL_FORMAT } from "constant/regex";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -11,12 +13,18 @@ export const CreateUser = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const password = watch("password");
+
+  const onSubmit = async (data) => {
     alert("Successfully created.");
     router.push("/user");
+    await axios.post(`${API_URL}/create`, {
+      ...data,
+    });
   };
   return (
     <div className="flex items-center justify-center py-12 px-4">
@@ -26,15 +34,15 @@ export const CreateUser = () => {
             placeholder="First name"
             required
             label="First Name"
-            error={errors.firstname && errors.firstname?.message}
-            {...register("firstname", { required: "Required this field." })}
+            error={errors.firstName && errors.firstName?.message}
+            {...register("firstName", { required: "Required this field." })}
           />
           <Input
             placeholder="Last name"
             required
             label="Last Name"
-            error={errors.lastname && errors.lastname?.message}
-            {...register("lastname", { required: "Required this field." })}
+            error={errors.lastName && errors.lastName?.message}
+            {...register("lastName", { required: "Required this field." })}
           />
           <Input
             placeholder="Email"
@@ -47,6 +55,28 @@ export const CreateUser = () => {
                 value: EMAIL_FORMAT,
                 message: "Invalid Email",
               },
+            })}
+          />
+          <Input
+            placeholder="Password"
+            required
+            label="Password"
+            type="password"
+            error={errors.password && errors.password?.message}
+            {...register("password", {
+              required: "Required this field.",
+            })}
+          />
+          <Input
+            placeholder="Password Confirm"
+            required
+            label="Password Confirm"
+            type="password"
+            error={errors.confirmPassword && errors.confirmPassword?.message}
+            {...register("confirmPassword", {
+              required: "Required this field.",
+              validate: (value) =>
+                value === password || "Password did not match",
             })}
           />
           <Button onClick={handleSubmit((d) => onSubmit(d))}>Submit</Button>
