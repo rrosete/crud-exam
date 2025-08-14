@@ -31,9 +31,15 @@ export const User = () => {
     }
   };
 
-  const handleEdit = () => {};
+  const handleEdit = (id) => {
+    router.push(`/user/${id}`);
+  };
 
-  const handleDelete = () => {};
+  const handleDelete = async (id) => {
+    alert("Delete Successfully.");
+    await axios.delete(`${API_URL}/deleteUser/${id}`);
+    fetchData();
+  };
 
   const renderData = data.map((item) => {
     return {
@@ -44,7 +50,7 @@ export const User = () => {
         <div className="flex flex-row gap-2">
           <Button
             onClick={() => {
-              handleEdit(item);
+              handleEdit(item.id);
             }}
           >
             Edit
