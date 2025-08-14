@@ -23,20 +23,6 @@ const CreatePost = () => {
     <div className="flex items-center justify-center py-12 px-4">
       <div className="max-w-md w-full space-y-8">
         <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            placeholder="First name"
-            required
-            label="First Name"
-            error={errors.firstname && errors.firstname?.message}
-            {...register("firstname", { required: "Required this field." })}
-          />
-          <Input
-            placeholder="Last name"
-            required
-            label="Last Name"
-            error={errors.lastname && errors.lastname?.message}
-            {...register("lastname", { required: "Required this field." })}
-          />
           <Textarea
             required
             label="Comment"
